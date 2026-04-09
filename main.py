@@ -5,7 +5,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import telebot
 from telebot import types
 
-TOKEN = "ВСТАВЬ_СЮДА_СВОЙ_ТОКЕН"
+TOKEN = "8277931008:AAHYGbRNreR96KQgKXB7avGPNIKI9a--tbQ"
 GROUP_ID = -4871965571
 
 bot = telebot.TeleBot(TOKEN)
