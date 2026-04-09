@@ -18,8 +18,6 @@ texts = {
         "phone_button": "Отправить номер телефона",
         "phone_error": "Пожалуйста, используйте кнопку ниже, чтобы отправить номер телефона.",
         "name": "Пожалуйста, введите ваше полное имя.",
-        "direction": "Пожалуйста, укажите направление обучения.",
-        "group": "Пожалуйста, укажите номер вашей учебной группы.",
         "appeal": "Пожалуйста, напишите своё обращение.",
         "done": "✅ Спасибо! Ваше обращение зарегистрировано. По вашему обращению с вами свяжутся."
     },
@@ -29,10 +27,8 @@ texts = {
         "phone_button": "Telefon raqamini yuborish",
         "phone_error": "Iltimos, telefon raqamingizni yuborish uchun quyidagi tugmadan foydalaning.",
         "name": "Iltimos, to‘liq ism-familiyangizni kiriting.",
-        "direction": "Iltimos, ta’lim yo‘nalishingizni kiriting.",
-        "group": "Iltimos, o‘quv guruhingiz raqamini kiriting.",
         "appeal": "Iltimos, murojaatingizni yozing.",
-        "done": "✅ Rahmat! Murojaatingiz ro‘yxatga olindi. Siz bilan tez orada bog‘lanishadi."
+        "done": "✅ Rahmat! Murojaatingiz ro‘yxatga olindi. Siz bilan bog‘lanishadi."
     },
     "en": {
         "choose_language": "Please choose a language:",
@@ -40,10 +36,8 @@ texts = {
         "phone_button": "Share phone number",
         "phone_error": "Please use the button below to share your phone number.",
         "name": "Please enter your full name.",
-        "direction": "Please specify your field of study.",
-        "group": "Please enter your study group number.",
         "appeal": "Please write your message.",
-        "done": "✅ Thank you! Your request has been registered. You will be contacted soon."
+        "done": "✅ Thank you! Your request has been registered. You will be contacted."
     }
 }
 
@@ -106,30 +100,17 @@ def get_name(message):
     lang = user_data[chat_id]["lang"]
     user_data[chat_id]["name"] = message.text.strip()
 
-    msg = bot.send_message(chat_id, texts[lang]["direction"])
-    bot.register_next_step_handler(msg, get_direction)
-
-
-def get_direction(message):
-    chat_id = message.chat.id
-    lang = user_data[chat_id]["lang"]
-    user_data[chat_id]["direction"] = message.text.strip()
-
-    msg = bot.send_message(chat_id, texts[lang]["group"])
-    bot.register_next_step_handler(msg, get_group_number)
-
-
-def get_group_number(message):
-    chat_id = message.chat.id
-    lang = user_data[chat_id]["lang"]
-    user_data[chat_id]["group"] = message.text.strip()
-
     msg = bot.send_message(chat_id, texts[lang]["appeal"])
     bot.register_next_step_handler(msg, get_appeal)
 
 
 def get_appeal(message):
     chat_id = message.chat.id
+
+    if chat_id not in user_data or "lang" not in user_data[chat_id]:
+        send_language_menu(chat_id)
+        return
+
     lang = user_data[chat_id]["lang"]
     user_data[chat_id]["appeal"] = message.text.strip()
 
@@ -139,8 +120,6 @@ def get_appeal(message):
         "📩 Новое обращение\n\n"
         f"👤 Имя: {data['name']}\n"
         f"📱 Телефон: {data['phone']}\n"
-        f"🎓 Направление: {data['direction']}\n"
-        f"🏫 Группа: {data['group']}\n"
         f"💬 Обращение:\n{data['appeal']}"
     )
 
