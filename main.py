@@ -184,7 +184,7 @@ def run_web_server():
 
 
 def run_bot():
-    bot.infinity_polling(skip_pending_updates=True)
+    bot.infinity_polling
 
 
 if __name__ == "__main__":
