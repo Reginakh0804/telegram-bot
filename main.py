@@ -21,7 +21,7 @@ texts = {
         "direction": "Пожалуйста, укажите направление обучения.",
         "group": "Пожалуйста, укажите номер вашей учебной группы.",
         "appeal": "Пожалуйста, напишите своё обращение.",
-        "done": "✅ Спасибо! Ваше обращение зарегистрировано."
+        "done": "✅ Спасибо! Ваше обращение зарегистрировано. По вашему обращению с вами свяжутся."
     },
     "uz": {
         "choose_language": "Iltimos, tilni tanlang:",
@@ -32,7 +32,7 @@ texts = {
         "direction": "Iltimos, ta’lim yo‘nalishingizni kiriting.",
         "group": "Iltimos, o‘quv guruhingiz raqamini kiriting.",
         "appeal": "Iltimos, murojaatingizni yozing.",
-        "done": "✅ Rahmat! Murojaatingiz ro‘yxatga olindi."
+        "done": "✅ Rahmat! Murojaatingiz ro‘yxatga olindi. Siz bilan tez orada bog‘lanishadi."
     },
     "en": {
         "choose_language": "Please choose a language:",
@@ -43,7 +43,7 @@ texts = {
         "direction": "Please specify your field of study.",
         "group": "Please enter your study group number.",
         "appeal": "Please write your message.",
-        "done": "✅ Thank you! Your request has been registered."
+        "done": "✅ Thank you! Your request has been registered. You will be contacted soon."
     }
 }
 
